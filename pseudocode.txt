@@ -1,0 +1,24 @@
+var que vai guardar fx para a jogada da CPU
+    criar var com random que irá definir a jogada
+        se for 1 será rock
+        se for 2 será paper
+        se for 3 será scissor
+    retornar valor jogada
+
+var que vai guardar fx para a jogada pessoa
+    criar var que vai guardar input da pessoa
+    retornar
+
+criar vars para guardar resultados
+    criar var resultadoCPU com valorIn 0
+    criar var resultadopessoa com valorIn 0
+
+fx para avaliação jogada
+    comparar as vars das jogadas
+        print da mensagem para a pessoa
+        adicionar 1 ao jogador vencedor
+
+
+    
+
+
