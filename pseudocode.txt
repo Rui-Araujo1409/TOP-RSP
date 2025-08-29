@@ -1,22 +1,35 @@
-var que vai guardar fx para a jogada da CPU
-    criar var com random que irá definir a jogada
-        se for 1 será rock
-        se for 2 será paper
-        se for 3 será scissor
-    retornar valor jogada
+//criar a jogada da CPU
+    //criar var com random que irá definir a jogada
+        //se for 1 será rock
+        //se for 2 será paper
+        //se for 3 será scissor
+    /retornar valor jogada
+//guardar a jogada numa var
 
-var que vai guardar fx para a jogada pessoa
-    criar var que vai guardar input da pessoa
-    retornar
+//fx para a jogada pessoa
+    //criar var que vai guardar input da pessoa
+    //converter texto em minusculas 
+    //retornar
+//guardar a jogada numa var
 
-criar vars para guardar resultados
-    criar var resultadoCPU com valorIn 0
-    criar var resultadopessoa com valorIn 0
+//criar vars para guardar resultados
+    //criar var resultadoCPU com valorIn 0
+    //criar var resultadopessoa com valorIn 0
 
-fx para avaliação jogada
-    comparar as vars das jogadas
-        print da mensagem para a pessoa
-        adicionar 1 ao jogador vencedor
+//fx para avaliação jogada
+    //comparar as vars das jogadas
+        //adicionar 1 ao jogador vencedor
+        //print da mensagem do resultado jogada
+        
+
+//fx que vai chamar a jogada e guardar resultados (5 voltas)
+    //criar o loop
+        //var que chama a jogada da CPU
+        //var que chama a jogada da pessoa
+        //chamar a fx da jogada
+    //repetir 4x
+    //compara os resultados finais
+    //apresenta vencedor do jogo e resultados finais
 
 
     
