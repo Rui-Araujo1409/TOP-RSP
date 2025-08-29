@@ -27,12 +27,12 @@ function getHumanChoice() {
     return jogadaPessoa;
 }
 
-
 //criar vars para guardar resultados
-   //criar var resultadoCPU com valorIn 0
+    //criar var resultadoCPU com valorIn 0
     let humanScore = 0;
     //criar var resultadopessoa com valorIn 0
     let computerScore = 0;
+
 //fx para avaliação jogada
 function playRound(humanChoice, computerChoice) {
     //comparar as vars das jogadas
@@ -49,13 +49,13 @@ function playRound(humanChoice, computerChoice) {
         console.log(`You win. Paper beats Rock.`);
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
         computerScore++;
-        console.log(`You lose. Scissors beats Paper.`);   
+        console.log(`You lose. Scissors beats Paper.`);
     } else if (humanChoice == "scissors" && computerChoice == "rock") {
         computerScore++;
-        console.log(`You lose. Rock beats Scissors.`);    
+        console.log(`You lose. Rock beats Scissors.`);
     } else if (humanChoice == "scissors" && computerChoice == "paper") {
         humanScore++;
-        console.log(`You win. Scissors beats Paper.`); 
+        console.log(`You win. Scissors beats Paper.`);
     } else if (humanChoice == "scissors" && computerChoice == "scissors") {
         console.log(`Tie. Both choose Scissors.`);
     } else if (humanChoice == "paper" && computerChoice == "paper") {
@@ -67,7 +67,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 //fx que vai chamar a jogada e guardar/apresentar resultados (5 voltas)
- function playGame(n) {
+function playGame(n) {
     //criar o loop
     for (i = 1; i <= n; i++) {
         //var que chama a jogada da pessoa
@@ -78,15 +78,14 @@ function playRound(humanChoice, computerChoice) {
         playRound(humanSelection, computerSelection);
     }
     //compara os resultados finais
-    if(computerScore > humanScore) {
+    if (computerScore > humanScore) {
         //apresenta vencedor do jogo e resultados finais
         console.log(`CPU wins the game. Final score: you: ${humanScore}, CPU: ${computerScore}`);
-    } else if(computerScore < humanScore) {
+    } else if (computerScore < humanScore) {
         console.log(`You win the game. Final score: you: ${humanScore}, CPU: ${computerScore}`);
     } else {
         console.log(`A tie. Final score: you: ${humanScore}, CPU: ${computerScore}`);
     }
 };
-
 
 playGame(5);
