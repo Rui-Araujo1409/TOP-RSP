@@ -17,7 +17,6 @@ function getComputerChoice() {
     return jogadaCPU;
 }
 
-console.log(getComputerChoice());
 
 const contentor = document.querySelector("#contentor");
 const botãoRock = document.querySelector("#btn-rock");
@@ -25,36 +24,94 @@ const botãoPaper = document.querySelector("#btn-paper");
 const botãoScissor = document.querySelector("#btn-scissor");
 let teste = "";
 let humanChoice = "";
- contentor.addEventListener("click", (event) => {
+   let humanScore = 0;
+    //criar var resultadopessoa com valorIn 0
+    let computerScore = 0;
+contentor.addEventListener("click", (event) => {
 
-        let target = event.target;
-        
-        switch (target.id) {
-            case "btn-rock":
-                teste = botãoRock.textContent.toLowerCase();
-                break;
-            case "btn-paper":
-                teste = botãoPaper.textContent;
-            case "btn-scissor":
-                teste = botãoScissor.textContent;
+    let target = event.target;
+
+    switch (target.id) {
+        case "btn-rock":
+            teste = botãoRock.textContent.toLowerCase();
+            break;
+        case "btn-paper":
+            teste = botãoPaper.textContent.toLowerCase();
+            break;
+        case "btn-scissor":
+            teste = botãoScissor.textContent.toLowerCase();
+            break;
+    }
+    function getHumanChoice(
+
+    ) {
+        //fx que vai retornar os valores para os elementos botão com event delegation
+        //e colocar na var
+
+
+        //criar var que vai guardar input da pessoa
+        //let jogadaPessoa = prompt("Qual a sua jogada? ");
+        //converter texto em minusculas 
+        jogadaPessoa = teste;
+        //retornar
+        return jogadaPessoa;
+    }
+ 
+
+
+    //fx para avaliação jogada
+    function playRound(humanChoice, computerChoice) {
+        //comparar as vars das jogadas
+        if (humanChoice == "rock" && computerChoice == "paper") {
+            //adicionar 1 ao jogador vencedor
+            computerScore++;
+            //print da mensagem do resultado jogada
+            console.log(`You lose. Paper beats Rock.`);
+        } else if (humanChoice == "rock" && computerChoice == "scissors") {
+            humanScore++;
+            console.log(`You win. Rock beats Scissors.`);
+        } else if (humanChoice == "paper" && computerChoice == "rock") {
+            humanScore++;
+            console.log(`You win. Paper beats Rock.`);
+        } else if (humanChoice == "paper" && computerChoice == "scissors") {
+            computerScore++;
+            console.log(`You lose. Scissors beats Paper.`);
+        } else if (humanChoice == "scissors" && computerChoice == "rock") {
+            computerScore++;
+            console.log(`You lose. Rock beats Scissors.`);
+        } else if (humanChoice == "scissors" && computerChoice == "paper") {
+            humanScore++;
+            console.log(`You win. Scissors beats Paper.`);
+        } else if (humanChoice == "scissors" && computerChoice == "scissors") {
+            console.log(`Tie. Both choose Scissors.`);
+        } else if (humanChoice == "paper" && computerChoice == "paper") {
+            console.log(`Tie. Both choose Paper.`);
+        } else if (humanChoice == "rock" && computerChoice == "rock") {
+            console.log(`Tie. Both choose Rock.`);
         }
-        function getHumanChoice(
+        return;
+    }
 
-) {
-    //fx que vai retornar os valores para os elementos botão com event delegation
-    //e colocar na var
-   
-
-    //criar var que vai guardar input da pessoa
-    //let jogadaPessoa = prompt("Qual a sua jogada? ");
-    //converter texto em minusculas 
-    jogadaPessoa = teste;
-    //retornar
-    return jogadaPessoa;
-}   
-    humanChoice = getHumanChoice();
-    console.log(humanChoice);
-    });
+    console.log(computerScore);
+    //fx que vai chamar a jogada e guardar/apresentar resultados (5 voltas)
+    function playGame() {
+        //criar o loop
+        //for (i = 1; i <= n; i++) {
+        //var que chama a jogada da pessoa
+        let humanSelection = getHumanChoice();
+        //var que chama a jogada da CPU
+        let computerSelection = getComputerChoice();
+        //chamar a fx da jogada
+        playRound(humanSelection, computerSelection);
+        //}
+        //compara os resultados finais
+        if(computerScore == 5 || humanScore == 5) {
+            (computerScore > humanScore) ? console.log(`CPU wins the game. Final score: you: ${humanScore}, CPU: ${computerScore}`) : console.log(`You win the game. Final score: you: ${humanScore}, CPU: ${computerScore}`);
+            } 
+        }
+        
+        playGame();
+});
 
 
 //fx para a jogada pessoa
@@ -62,63 +119,6 @@ let humanChoice = "";
 
 //criar vars para guardar resultados
 //criar var resultadoCPU com valorIn 0
-let humanScore = 0;
-//criar var resultadopessoa com valorIn 0
-let computerScore = 0;
 
-//fx para avaliação jogada
-function playRound(humanChoice, computerChoice) {
-    //comparar as vars das jogadas
-    if (humanChoice == "rock" && computerChoice == "paper") {
-        //adicionar 1 ao jogador vencedor
-        computerScore++;
-        //print da mensagem do resultado jogada
-        console.log(`You lose. Paper beats Rock.`);
-    } else if (humanChoice == "rock" && computerChoice == "scissors") {
-        humanScore++;
-        console.log(`You win. Rock beats Scissors.`);
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-        humanScore++;
-        console.log(`You win. Paper beats Rock.`);
-    } else if (humanChoice == "paper" && computerChoice == "scissors") {
-        computerScore++;
-        console.log(`You lose. Scissors beats Paper.`);
-    } else if (humanChoice == "scissors" && computerChoice == "rock") {
-        computerScore++;
-        console.log(`You lose. Rock beats Scissors.`);
-    } else if (humanChoice == "scissors" && computerChoice == "paper") {
-        humanScore++;
-        console.log(`You win. Scissors beats Paper.`);
-    } else if (humanChoice == "scissors" && computerChoice == "scissors") {
-        console.log(`Tie. Both choose Scissors.`);
-    } else if (humanChoice == "paper" && computerChoice == "paper") {
-        console.log(`Tie. Both choose Paper.`);
-    } else if (humanChoice == "rock" && computerChoice == "rock") {
-        console.log(`Tie. Both choose Rock.`);
-    }
-    return;
-}
-
-//fx que vai chamar a jogada e guardar/apresentar resultados (5 voltas)
-function playGame() {
-    //criar o loop
-    //for (i = 1; i <= n; i++) {
-    //var que chama a jogada da pessoa
-    let humanSelection = getHumanChoice();
-    //var que chama a jogada da CPU
-    let computerSelection = getComputerChoice();
-    //chamar a fx da jogada
-    playRound(humanSelection, computerSelection);
-    //}
-    //compara os resultados finais
-    if (computerScore > humanScore) {
-        //apresenta vencedor do jogo e resultados finais
-        console.log(`CPU wins the game. Final score: you: ${humanScore}, CPU: ${computerScore}`);
-    } else if (computerScore < humanScore) {
-        console.log(`You win the game. Final score: you: ${humanScore}, CPU: ${computerScore}`);
-    } else {
-        console.log(`A tie. Final score: you: ${humanScore}, CPU: ${computerScore}`);
-    }
-};
 
 
