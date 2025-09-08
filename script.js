@@ -17,10 +17,36 @@ function getComputerChoice() {
     return jogadaCPU;
 }
 
+
+const contentor = document.querySelector("#contentor");
+
+
+
 //fx para a jogada pessoa
 function getHumanChoice() {
+//fx que vai retornar os valores para os elementos botão com event delegation
+//e colocar na var
+   let jogadaPessoa = contentor.addEventListener("click", (event) => {
+    const botãoRock = document.querySelector("#btn-rock");
+    const botãoPaper = document.querySelector("#btn-paper");
+    const botãoScissor = document.querySelector("#btn-scissor");
+    let target = event.target;
+    let teste = "";
+    switch(target.id){
+        case "btn-rock":
+            console.log(botãoRock.textContent);
+            break;
+        case "btn-paper":
+            botãoPaper.textContent;
+        case "btn-scissor":
+            botãoScissor.textContent;
+    }
+    return teste;
+   })
+
+   console.log(jogadaPessoa);
     //criar var que vai guardar input da pessoa
-    let jogadaPessoa = prompt("Qual a sua jogada? ");
+    //let jogadaPessoa = prompt("Qual a sua jogada? ");
     //converter texto em minusculas 
     jogadaPessoa = jogadaPessoa.toLowerCase();
     //retornar
@@ -67,16 +93,16 @@ function playRound(humanChoice, computerChoice) {
 }
 
 //fx que vai chamar a jogada e guardar/apresentar resultados (5 voltas)
-function playGame(n) {
+function playGame() {
     //criar o loop
-    for (i = 1; i <= n; i++) {
+    //for (i = 1; i <= n; i++) {
         //var que chama a jogada da pessoa
         let humanSelection = getHumanChoice();
         //var que chama a jogada da CPU
         let computerSelection = getComputerChoice();
         //chamar a fx da jogada
         playRound(humanSelection, computerSelection);
-    }
+    //}
     //compara os resultados finais
     if (computerScore > humanScore) {
         //apresenta vencedor do jogo e resultados finais
@@ -88,4 +114,4 @@ function playGame(n) {
     }
 };
 
-playGame(5);
+
