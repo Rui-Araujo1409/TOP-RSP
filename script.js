@@ -17,47 +17,54 @@ function getComputerChoice() {
     return jogadaCPU;
 }
 
+console.log(getComputerChoice());
 
 const contentor = document.querySelector("#contentor");
+const botãoRock = document.querySelector("#btn-rock");
+const botãoPaper = document.querySelector("#btn-paper");
+const botãoScissor = document.querySelector("#btn-scissor");
+let teste = "";
+let humanChoice = "";
+ contentor.addEventListener("click", (event) => {
 
+        let target = event.target;
+        
+        switch (target.id) {
+            case "btn-rock":
+                teste = botãoRock.textContent.toLowerCase();
+                break;
+            case "btn-paper":
+                teste = botãoPaper.textContent;
+            case "btn-scissor":
+                teste = botãoScissor.textContent;
+        }
+        function getHumanChoice(
 
+) {
+    //fx que vai retornar os valores para os elementos botão com event delegation
+    //e colocar na var
+   
 
-//fx para a jogada pessoa
-function getHumanChoice() {
-//fx que vai retornar os valores para os elementos botão com event delegation
-//e colocar na var
-   let jogadaPessoa = contentor.addEventListener("click", (event) => {
-    const botãoRock = document.querySelector("#btn-rock");
-    const botãoPaper = document.querySelector("#btn-paper");
-    const botãoScissor = document.querySelector("#btn-scissor");
-    let target = event.target;
-    let teste = "";
-    switch(target.id){
-        case "btn-rock":
-            console.log(botãoRock.textContent);
-            break;
-        case "btn-paper":
-            botãoPaper.textContent;
-        case "btn-scissor":
-            botãoScissor.textContent;
-    }
-    return teste;
-   })
-
-   console.log(jogadaPessoa);
     //criar var que vai guardar input da pessoa
     //let jogadaPessoa = prompt("Qual a sua jogada? ");
     //converter texto em minusculas 
-    jogadaPessoa = jogadaPessoa.toLowerCase();
+    jogadaPessoa = teste;
     //retornar
     return jogadaPessoa;
-}
+}   
+    humanChoice = getHumanChoice();
+    console.log(humanChoice);
+    });
+
+
+//fx para a jogada pessoa
+
 
 //criar vars para guardar resultados
-    //criar var resultadoCPU com valorIn 0
-    let humanScore = 0;
-    //criar var resultadopessoa com valorIn 0
-    let computerScore = 0;
+//criar var resultadoCPU com valorIn 0
+let humanScore = 0;
+//criar var resultadopessoa com valorIn 0
+let computerScore = 0;
 
 //fx para avaliação jogada
 function playRound(humanChoice, computerChoice) {
@@ -96,12 +103,12 @@ function playRound(humanChoice, computerChoice) {
 function playGame() {
     //criar o loop
     //for (i = 1; i <= n; i++) {
-        //var que chama a jogada da pessoa
-        let humanSelection = getHumanChoice();
-        //var que chama a jogada da CPU
-        let computerSelection = getComputerChoice();
-        //chamar a fx da jogada
-        playRound(humanSelection, computerSelection);
+    //var que chama a jogada da pessoa
+    let humanSelection = getHumanChoice();
+    //var que chama a jogada da CPU
+    let computerSelection = getComputerChoice();
+    //chamar a fx da jogada
+    playRound(humanSelection, computerSelection);
     //}
     //compara os resultados finais
     if (computerScore > humanScore) {
