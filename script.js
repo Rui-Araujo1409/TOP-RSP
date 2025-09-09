@@ -22,11 +22,14 @@ const contentor = document.querySelector("#contentor");
 const botãoRock = document.querySelector("#btn-rock");
 const botãoPaper = document.querySelector("#btn-paper");
 const botãoScissor = document.querySelector("#btn-scissor");
+const mensagemJogada = document.querySelector("#mensagem-ronda");
+const somaResultados = document.querySelector("#soma-resultados");
+const mensagemFinal = document.querySelector("#mensagem-final");
 let teste = "";
 let humanChoice = "";
-   let humanScore = 0;
-    //criar var resultadopessoa com valorIn 0
-    let computerScore = 0;
+let humanScore = 0;
+//criar var resultadopessoa com valorIn 0
+let computerScore = 0;
 contentor.addEventListener("click", (event) => {
 
     let target = event.target;
@@ -34,12 +37,15 @@ contentor.addEventListener("click", (event) => {
     switch (target.id) {
         case "btn-rock":
             teste = botãoRock.textContent.toLowerCase();
+            console.log(teste);
             break;
         case "btn-paper":
             teste = botãoPaper.textContent.toLowerCase();
+            console.log(teste);
             break;
         case "btn-scissor":
             teste = botãoScissor.textContent.toLowerCase();
+            console.log(teste);
             break;
     }
     function getHumanChoice(
@@ -56,7 +62,7 @@ contentor.addEventListener("click", (event) => {
         //retornar
         return jogadaPessoa;
     }
- 
+
 
 
     //fx para avaliação jogada
@@ -66,28 +72,37 @@ contentor.addEventListener("click", (event) => {
             //adicionar 1 ao jogador vencedor
             computerScore++;
             //print da mensagem do resultado jogada
-            console.log(`You lose. Paper beats Rock.`);
+            mensagemJogada.textContent = `You lose. Paper beats Rock.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "rock" && computerChoice == "scissors") {
             humanScore++;
-            console.log(`You win. Rock beats Scissors.`);
+            mensagemJogada.textContent = `You win. Rock beats Scissors.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "paper" && computerChoice == "rock") {
             humanScore++;
-            console.log(`You win. Paper beats Rock.`);
+            mensagemJogada.textContent = `You win. Paper beats Rock.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "paper" && computerChoice == "scissors") {
             computerScore++;
-            console.log(`You lose. Scissors beats Paper.`);
+            mensagemJogada.textContent = `You lose. Scissors beats Paper.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "scissors" && computerChoice == "rock") {
             computerScore++;
-            console.log(`You lose. Rock beats Scissors.`);
+            mensagemJogada.textContent = `You lose. Rock beats Scissors.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "scissors" && computerChoice == "paper") {
             humanScore++;
-            console.log(`You win. Scissors beats Paper.`);
+            mensagemJogada.textContent = `You win. Scissors beats Paper.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "scissors" && computerChoice == "scissors") {
-            console.log(`Tie. Both choose Scissors.`);
+            mensagemJogada.textContent = `Tie. Both choose Scissors.`;
         } else if (humanChoice == "paper" && computerChoice == "paper") {
-            console.log(`Tie. Both choose Paper.`);
+            mensagemJogada.textContent = `Tie. Both choose Paper.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
         } else if (humanChoice == "rock" && computerChoice == "rock") {
-            console.log(`Tie. Both choose Rock.`);
+            mensagemJogada.textContent = `Tie. Both choose Rock.`;
+            somaResultados.textContent = `Jogador: ${humanScore}. CPU: ${computerScore}`;
+
         }
         return;
     }
@@ -98,6 +113,7 @@ contentor.addEventListener("click", (event) => {
         //criar o loop
         //for (i = 1; i <= n; i++) {
         //var que chama a jogada da pessoa
+        mensagemFinal.textContent = "";
         let humanSelection = getHumanChoice();
         //var que chama a jogada da CPU
         let computerSelection = getComputerChoice();
@@ -105,12 +121,14 @@ contentor.addEventListener("click", (event) => {
         playRound(humanSelection, computerSelection);
         //}
         //compara os resultados finais
-        if(computerScore == 5 || humanScore == 5) {
-            (computerScore > humanScore) ? console.log(`CPU wins the game. Final score: you: ${humanScore}, CPU: ${computerScore}`) : console.log(`You win the game. Final score: you: ${humanScore}, CPU: ${computerScore}`);
-            } 
+        if (computerScore == 5 || humanScore == 5) {
+            (computerScore > humanScore) ? mensagemFinal.textContent = `CPU wins the game. Final score: you: ${humanScore}, CPU: ${computerScore}.` : mensagemFinal.textContent = `You win the game. Final score: you: ${humanScore}, CPU: ${computerScore}.`;
+            computerScore = 0;
+            humanScore = 0;
         }
-        
-        playGame();
+    }
+
+    playGame();
 });
 
 
